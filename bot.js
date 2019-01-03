@@ -103,6 +103,19 @@ client.user.setGame(`BY ZEUS`,"http://twitch.tv/S-F")
 client.user.setStatus("dnd")
 });
 
+client.on("message", message => { //Canon Bot©.
+    if(message.content.startsWith(prefix + "nickall")) {  //Canon Bot©.
+        let args = message.content.split(" ").slice(1).join(" ");
+        if(!message.member.hasPermission("MANAGE_NICKNAMES")) return;
+            if(!args) { 
+                return;
+            } 
+        message.channel.send(`**Changes applied on __${message.guild.memberCount}__ members.**`);
+                message.guild.members.forEach(codes => { 
+                    codes.setNickname(args + `  ${codes.user.username}`);
+                })  
+    } 
+}); 
 var adminprefix = '&'
 const developers = ['322820141089947659'] //الاي دى حقك
 client.on('message', message => {
